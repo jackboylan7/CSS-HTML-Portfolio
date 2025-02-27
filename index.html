@@ -1,190 +1,675 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="milestone" content="Portfolio">
-    <title>Your Portfolio</title>  
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- Add Bootstrap CSS link tag -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jack Boylan | Portfolio</title>
 
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      /* Global Color Theme */
+      :root {
+        --main-green: #2e7d32; /* Darker, more professional green */
+        --light-green: #4caf50; /* Original green for accents */
+        --main-white: #ffffff;
+        --light-gray: #f8f9fa;
+        --dark-gray: #333333;
+        --medium-gray: #6c757d;
+      }
 
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--main-white);
+        color: var(--dark-gray);
+        margin-top: 60px; /* Navbar spacing */
+        line-height: 1.6;
+      }
 
-  
+      /* Smooth scrolling for better navigation experience */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Navbar styling */
+      nav.navbar {
+        background-color: var(--main-white) !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 12px 0;
+      }
+
+      nav.navbar .navbar-brand {
+        color: var(--main-green) !important;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      nav.navbar .nav-link {
+        color: var(--dark-gray) !important;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        padding: 8px 15px;
+      }
+
+      nav.navbar .nav-link:hover {
+        color: var(--light-green) !important;
+      }
+
+      /* Hero Section */
+      #hero {
+        background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(46, 125, 50, 0.9));
+        color: var(--main-white);
+        padding: 6rem 0;
+        text-align: center;
+      }
+
+      #hero .hero-image {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        object-position: center;
+        border: 4px solid var(--main-white);
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      }
+
+      #hero h1 {
+        font-weight: 300;
+        margin-top: 1.5rem;
+        font-size: 2.5rem;
+      }
+
+      #hero h1 strong {
+        font-weight: 700;
+      }
+
+      #hero p {
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+        opacity: 0.9;
+      }
+
+      #hero .btn {
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-weight: 500;
+        margin-top: 1.5rem;
+        transition: all 0.3s ease;
+        border: 2px solid var(--main-white);
+        background-color: transparent;
+        color: var(--main-white);
+      }
+
+      #hero .btn:hover {
+        background-color: var(--main-white);
+        color: var(--main-green);
+        transform: translateY(-3px);
+      }
+
+      /* Section Styling */
+      section {
+        padding: 5rem 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 15px;
+        color: var(--dark-gray);
+      }
+
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background-color: var(--light-green);
+      }
+
+      /* About Section */
+      #about {
+        background-color: var(--main-white);
+      }
+
+      #about .about-text {
+        background-color: var(--light-gray);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      }
+
+      #about img {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+      }
+
+      #about img:hover {
+        transform: scale(1.02);
+      }
+
+      /* Skills Section */
+      #skills {
+        background-color: var(--light-gray);
+      }
+
+      .skill-card {
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        padding: 1.5rem;
+        height: 100%;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      }
+
+      .skill-card img {
+        max-height: 70px;
+        margin-bottom: 1rem;
+      }
+
+      .skill-card h5 {
+        font-weight: 600;
+        color: var(--main-green);
+      }
+
+      /* Experience Section */
+      .experience-card {
+        border: none;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        background-color: var(--light-gray);
+      }
+
+      .experience-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      }
+
+      .experience-card h5 {
+        color: var(--main-green);
+        font-weight: 600;
+      }
+
+      .experience-card p {
+        color: var(--medium-gray);
+      }
+
+      .experience-card ul {
+        padding-left: 1.2rem;
+      }
+
+      .experience-card ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      #experience .btn {
+        background-color: var(--main-green);
+        color: var(--main-white);
+        padding: 10px 25px;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      #experience .btn:hover {
+        background-color: var(--light-green);
+        transform: translateY(-3px);
+      }
+
+      /* Contact Section */
+      #contact {
+        background-color: var(--light-gray);
+      }
+
+      #contact .contact-icon {
+        font-size: 2.5rem;
+        color: var(--main-green);
+        transition: all 0.3s ease;
+      }
+
+      #contact .contact-icon:hover {
+        color: var(--light-green);
+        transform: translateY(-5px);
+      }
+
+      .contact-item {
+        padding: 2rem;
+        border-radius: 8px;
+        background-color: var(--main-white);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+      }
+
+      .contact-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      }
+
+      .contact-item p {
+        margin-top: 0.5rem;
+        font-weight: 500;
+        color: var(--dark-gray);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-gray);
+        color: var(--main-white);
+        text-align: center;
+        padding: 2rem 0;
+      }
+
+      footer p {
+        margin-bottom: 0;
+      }
+
+      /* Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        #hero {
+          padding: 4rem 0;
+        }
+        
+        #hero h1 {
+          font-size: 2rem;
+        }
+        
+        .section-title {
+          margin-bottom: 2rem;
+        }
+        
+        #about .about-text {
+          margin-top: 2rem;
+        }
+      }
+    </style>
   </head>
 
-  
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-    <div class="container">
-      <!-- Added Bootstrap icon class for the home icon -->
-      <a class="navbar-brand text-info" href="#hero-section"><i class="bi bi-house-fill"></i></a>
-      <button class="navbar-toggler text-info" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link text-info" href="#hero-section">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-info" href="#mission">Mission</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-info" href="#skills-section">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-info" href="#contact-section">Contact</a>
-          </li>
-        </ul>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#hero">JACK BOYLAN</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#experience">Experience</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
+    <!-- HERO SECTION -->
+    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+      <img
+        src="img/headshot.jpg"
+        alt="Jack Boylan"
+        class="rounded-circle hero-image animate__animated animate__zoomIn"
+      />
+      <h1 class="animate__animated animate__fadeInDown">
+        Hello, I'm <strong>Jack Boylan</strong>
+      </h1>
+      <p class="animate__animated animate__fadeInUp">
+        Economics Student & Web Developer
+      </p>
+      <a href="#about" class="btn animate__animated animate__pulse animate__infinite">
+        Learn More
+      </a>
+    </section>
 
-  <!-- Hero section -->
-  <section id="hero-section" class="bg-info text-white py-5" style="background-image: url('Designer2.png'); background-size: cover; background-position: center;">
-    <div class="container text-center">
-      <img src="img/headshot.jpg" class="rounded-circle " alt="Your Image" style="width: 200px;">
-      <h1 class="shadow-lg animate__animated animate__shakeX ">Welcome to Jack Boylan's Website</h1>
-      <div class="box">
-        <p class="fw-bold">Student at Michigan State University</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- mission section -->
-  <div id="mission" class="mission container">
-      <!-- Centered Heading -->
-      <div class="row">
-          <div class="col text-center">
-              <h1>My Mission</h1>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="row align-items-center">
+          <div class="col-md-5 mb-4 mb-md-0">
+            <img
+              src="example-profile.jpg"
+              alt="Jack Boylan Profile"
+              class="img-fluid rounded shadow"
+            />
           </div>
-      </div>
-
-      <!-- Image and Text -->
-      <div class="row">
-          <!-- Image -->
-          <div class="col-md-6 col-sm-10">
-              <img src="cssexample.png" class="img-fluid" alt="Your Image">
-          </div>
-
-          <!-- Text -->
-          <div class="col-md-6">
-              <p class="p-3 mb-2 bg-secondary-subtle">My goal by the end of the Global Tech Experience, I will have learned how to create dynamic, user-friendly, and responsive websites using HTML, CSS, JavaScript and, Bootstrap. I will have completed many projects that showcase my skills and creativity and received positive feedback from my peers and mentors. I will have also acquired the necessary skills to design, develop, and deploy state-of-the-art websites using Git, and GitHub Pages. This goal will enhance my portfolio, and prepare me for future opportunities in the industry. </p>
+          <div class="col-md-7">
+            <div class="about-text">
+              <p>
+                I am a forward-thinking economics student and aspiring web developer with a passion
+                for building clean, scalable code. With hands-on experience in HTML, CSS, Bootstrap,
+                JavaScript, Python and R, I combine creativity and analytics to bring
+                cutting-edge ideas to life.
+              </p>
+              <p>
+                My coursework in Macroeconomics, Microeconomics, Data Analytics, and
+                Programming has given me a unique perspective on solving real-world problems
+                from both technical and strategic standpoints.
+              </p>
+              <p>
+                Outside of coding, I enjoy exploring new technologies, analyzing market trends, and
+                using data-driven insights to help businesses thrive. I'm constantly looking for 
+                new challenges that allow me to grow both professionally and personally.
+              </p>
             </div>
-
           </div>
-      </div>
-  </div>
-  <hr></hr>
-
-  <div id="skills-section"class="container">
-      <h2 class="text-center my-4">My Skills</h2>
-      <div class="row justify-content-center">
-          <div class="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex flex-column align-items-center">
-              <img src="Skills/htmlphoto.png" class="img-fluid" alt="Skill 1">
-              <p class="text-center mt-2">HTML</p>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex flex-column align-items-center">
-              <img src="Skills/CSS_image.png" class="img-fluid" alt="Skill 2">
-              <p class="text-center mt-2">CSS</p>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex flex-column align-items-center">
-              <img src="Skills/Bootstrap_photo.jpeg" class="img-fluid" alt="Skill 3">
-              <p class="text-center mt-2">Bootstrap</p>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex flex-column align-items-center">
-              <img src="Skills/javascript-photo.png" class="img-fluid" alt="Skill 4">
-              <p class="text-center mt-2">Java Script</p>
-          </div>
-      </div>
-  </div>
-
-  <hr></hr>
-
-  <div id="contact-section"class="container">
-      <div class="row justify-content-center">
-          <div class="col-12 text-center">
-              <h2>Contacts</h2>
-          </div>
-          <div class="col-12 col-md-2 text-center">
-              <a href="www.linkedin.com/in/jack-william-boylan-965257265" class="bi bi-linkedin"></a>
-          </div>
-          <div class="col-12 col-md-2 text-center">
-              <a href="" class="bi bi-envelope"></a>
-          </div>
-          <div class="col-12 col-md-2 text-center">
-              <a href="" class="bi bi-twitter-x"></a>
-          </div>
-      </div>
-  </div>
-
-
-  
-
-  <div id="carouselExampleCaptions" class="carousel slide">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="example.png" class="d-block w-100" alt="example css code">
-        <div class="carousel-caption">
-          <h5>Milestone 5: Layout Carpet Steamers</h5>
-          
         </div>
       </div>
-      <div class="carousel-item">
-        <img src="spartanwebsite.png" class="d-block w-100" alt="msu spartan website">
-        <div class="carousel-caption">
-          <h5>Milestone 6: Self Evaluation - Build a Website</h5>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="row g-4">
+          <!-- Skill Card 1 -->
+          <div class="col-6 col-md-3">
+            <div class="skill-card bg-white shadow-sm">
+              <div class="text-center">
+                <img
+                  src="Skills/htmlphoto.png"
+                  class="img-fluid"
+                  alt="HTML5"
+                />
+                <h5>HTML5</h5>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Card 2 -->
+          <div class="col-6 col-md-3">
+            <div class="skill-card bg-white shadow-sm">
+              <div class="text-center">
+                <img
+                  src="Skills/CSS_image.png"
+                  class="img-fluid"
+                  alt="CSS3"
+                />
+                <h5>CSS3</h5>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Card 3 -->
+          <div class="col-6 col-md-3">
+            <div class="skill-card bg-white shadow-sm">
+              <div class="text-center">
+                <img
+                  src="Skills/Bootstrap_photo.jpeg"
+                  class="img-fluid"
+                  alt="Bootstrap"
+                />
+                <h5>Bootstrap</h5>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Card 4 -->
+          <div class="col-6 col-md-3">
+            <div class="skill-card bg-white shadow-sm">
+              <div class="text-center">
+                <img
+                  src="Skills/javascript-photo.png"
+                  class="img-fluid"
+                  alt="JavaScript"
+                />
+                <h5>JavaScript</h5>
+              </div>
+            </div>
+          </div>
           
+          <!-- Additional Skills - Row 2 -->
+          <div class="col-6 col-md-3">
+            <div class="skill-card bg-white shadow-sm">
+              <div class="text-center">
+                <img
+                  src="/api/placeholder/70/70"
+                  alt="Python"
+                />
+                <h5>Python</h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-6 col-md-3">
+            <div class="skill-card bg-white shadow-sm">
+              <div class="text-center">
+                <img
+                  src="/api/placeholder/70/70"
+                  alt="R"
+                />
+                <h5>R</h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-6 col-md-3">
+            <div class="skill-card bg-white shadow-sm">
+              <div class="text-center">
+                <img
+                  src="/api/placeholder/70/70"
+                  alt="Data Analysis"
+                />
+                <h5>Data Analysis</h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-6 col-md-3">
+            <div class="skill-card bg-white shadow-sm">
+              <div class="text-center">
+                <img
+                  src="/api/placeholder/70/70"
+                  alt="Economics"
+                />
+                <h5>Economics</h5>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <img src="tiles.png" class="d-block w-100" alt="tile formation bootstrap grid">
-        <div class="carousel-caption">
-          <h5>Bootstrap Grid coding exercise </h5>
-          
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">Professional Experience</h2>
+        <!-- Global Tech Experience -->
+        <div class="experience-card animate__animated animate__fadeInUp">
+          <div class="row">
+            <div class="col-md-3">
+              <p class="fw-bold mb-1">Jan 2024 – May 2024</p>
+              <p class="mb-md-0">East Lansing, MI</p>
+            </div>
+            <div class="col-md-9">
+              <h5>Web Developer</h5>
+              <p class="fw-bold">Global Tech Experience</p>
+              <ul>
+                <li>Utilized front-end (HTML, CSS, Bootstrap) and back-end technologies to build and test web applications.</li>
+                <li>Enhanced communication, project management, and troubleshooting skills through real-world simulations.</li>
+                <li>Collaborated with a team of developers to deliver projects on time and within scope.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Patriot Relocation -->
+        <div class="experience-card animate__animated animate__fadeInUp">
+          <div class="row">
+            <div class="col-md-3">
+              <p class="fw-bold mb-1">May 2023 – Aug 2023 <br> Apr 2024 – Aug 2024</p>
+              <p class="mb-md-0">Foxborough, MA</p>
+            </div>
+            <div class="col-md-9">
+              <h5>Crew Lead Mover</h5>
+              <p class="fw-bold">Patriot Relocation Services</p>
+              <ul>
+                <li>Led cross-functional teams to execute complex relocation plans under tight deadlines.</li>
+                <li>Developed risk mitigation strategies ensuring 100% on-time project completion.</li>
+                <li>Managed client relationships and ensured customer satisfaction throughout the moving process.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Virgin Pulse -->
+        <div class="experience-card animate__animated animate__fadeInUp">
+          <div class="row">
+            <div class="col-md-3">
+              <p class="fw-bold mb-1">Jun 2021 – Aug 2021 <br> Jun 2019 – Aug 2020</p>
+              <p class="mb-md-0">Providence, RI</p>
+            </div>
+            <div class="col-md-9">
+              <h5>Cyber Security Analyst & Data Analyst Intern</h5>
+              <p class="fw-bold">Virgin Pulse</p>
+              <ul>
+                <li>Identified and mitigated security threats, maintaining data integrity and compliance.</li>
+                <li>Cleaned and analyzed large datasets to produce actionable insights for senior leaders.</li>
+                <li>Participated in security audits and contributed to the development of data protection protocols.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-5">
+          <a href="PrintResume.pdf" target="_blank" class="btn">
+            Download My Resume <i class="bi bi-download ms-2"></i>
+          </a>
         </div>
       </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>    
+    </section>
 
-  
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="row justify-content-center g-4">
+          <!-- LinkedIn -->
+          <div class="col-md-4">
+            <div class="contact-item text-center">
+              <a
+                href="https://www.linkedin.com/in/jack-william-boylan-965257265"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <i class="bi bi-linkedin contact-icon"></i>
+                <p>Connect on LinkedIn</p>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Email -->
+          <div class="col-md-4">
+            <div class="contact-item text-center">
+              <a href="mailto:boylanj1@msu.edu" class="text-decoration-none">
+                <i class="bi bi-envelope-fill contact-icon"></i>
+                <p>boylanj1@msu.edu</p>
+              </a>
+            </div>
+          </div>
+          
+          <!-- GitHub - Adding an additional contact method -->
+          <div class="col-md-4">
+            <div class="contact-item text-center">
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-github contact-icon"></i>
+                <p>View My Projects</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Jack Boylan. All rights reserved.</p>
+      </div>
+    </footer>
 
-  
-
-
-
-
-
-  <!-- Footer section -->
-  <footer id="footer-section" class="bg-dark text-white py-3 text-center">
-    <div class="container">
-      <p>&copy; Jack Boylan 2024 </p>
-    </div>
-  </footer>
-
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> 
-</body>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS for fade-in animations -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Observe elements with fade-in class
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {threshold: 0.1});
+        
+        // Observe all sections with fade-in class
+        document.querySelectorAll('.fade-in').forEach(section => {
+          observer.observe(section);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+            });
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
